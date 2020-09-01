@@ -1,5 +1,5 @@
 FROM nginx:1.19.1-alpine
-COPY nginx.conf /etc/nginx/nginx.conf
+ADD nginx.conf /etc/nginx/nginx.conf
 RUN apk update && apk add bash
 # Add this to the line above if you wan't nano: && apk add nano
 
