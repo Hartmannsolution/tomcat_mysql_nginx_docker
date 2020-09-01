@@ -6,7 +6,7 @@ services:
     container_name: mysql8_3sem
     
     environment:
-      MYSQL_ROOT_PASSWORD: 'root'
+      # MYSQL_ROOT_PASSWORD: 'SOMESECRETPW'
     ports:
       # <Port exposed> : < MySQL Port running inside container>
       - '3306:3306'
