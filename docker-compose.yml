@@ -4,6 +4,7 @@ services:
     # image: mysql:8.0
     build: ./mysql/
     container_name: mysql
+    restart: unless-stopped 
     
     environment:
       MYSQL_ROOT_PASSWORD: "MYSQL_SECRET_ROOT_PASSWORD"
@@ -26,6 +27,7 @@ services:
     # image:  tomcat:9.0.37-jdk8
     build: ./tomcat/
     container_name: tomcat
+    restart: unless-stopped
 
     # ---- IMPORTANT ----
     # In production (on digitalOcean)  replace ALL values below with your own secret values
@@ -41,12 +43,15 @@ services:
     volumes:
       - ./tomcat/webapps:/usr/local/tomcat/webapps
       - ./tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+     # Makes the manager accessible outside of localhost
+      - ./tomcat/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml
+
  
     networks:
       - tomcat_network
     
-      # copy the tomcat manager app and make it accessible outside of localhost (then start tomcat)
-    command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager && mv /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml && catalina.sh run"
+      # copy the tomcat manager app amd start tomcat)
+    command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager && catalina.sh run"
     
 networks:
   tomcat_network:
