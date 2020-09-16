@@ -3,7 +3,7 @@ services:
   db:
     # image: mysql:8.0
     build: ./mysql/
-    container_name: mysql
+    container_name: mysql_3sem
     restart: unless-stopped 
     
     environment:
@@ -26,7 +26,7 @@ services:
   web:
     # image:  tomcat:9.0.37-jdk8
     build: ./tomcat/
-    container_name: tomcat
+    container_name: tomcat_3sem
     restart: unless-stopped
 
     # ---- IMPORTANT ----
@@ -51,7 +51,7 @@ services:
       - tomcat_network
     
       # copy the tomcat manager app amd start tomcat)
-    command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager && catalina.sh run"
+    command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps && catalina.sh run"
     
 networks:
   tomcat_network:
