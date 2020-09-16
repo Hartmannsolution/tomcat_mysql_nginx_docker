@@ -48,8 +48,9 @@ services:
     networks:
       - tomcat_network
     
-      # copy the tomcat manager app, context.xml and start tomcat)
-    command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager && cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml && catalina.sh run"
+      # copy the tomcat manager app amd start tomcat)
+    command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps && catalina.sh run"
+   ./mysql/startscript:/docker-entrypoint-initdb.d
     
 networks:
   tomcat_network:
