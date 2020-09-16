@@ -48,21 +48,6 @@ services:
       # copy the tomcat manager app and make it accessible outside of localhost (then start tomcat)
     command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager && mv /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml && catalina.sh run"
     
-  nginx:
-    ##image: nginx:1.15-alpine
-    build: "./nginx"
-    container_name: nginx_3sem
-    restart: unless-stopped
-    volumes:
-      - ./nginx/conf:/etc/nginx/conf.d
-      # - ./data/certbot/conf:/etc/letsencrypt
-      # - ./data/certbot/www:/var/www/certbot
-    # ports:
-      # - "80:80"
-      # - "443:443"
-    networks:
-      - tomcat_network
-
 networks:
   tomcat_network:
     driver: bridge
