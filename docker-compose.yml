@@ -49,7 +49,7 @@ services:
       - tomcat_network
     
       # copy the tomcat manager app, context.xml and start tomcat)
-    command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager && cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml && catalina.sh run"
+    command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps && cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml && catalina.sh run"
     
 networks:
   tomcat_network:
