@@ -33,7 +33,7 @@ services:
     # In production (on digitalOcean)  replace ALL values below with your own secret values
     # NEVER COMMIT/PUSH this file/project
     environment:
-      CONNECTION_STR: "jdbc:mysql://db:3306/startcode"
+      CONNECTION_STR: "jdbc:mysql://db:3306/"
       USER: "dev" # database user to use in tomcat apps
       PW: "ax2" # database password
       DEPLOYED: "PROD"
