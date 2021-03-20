@@ -34,6 +34,7 @@ services:
     # NEVER COMMIT/PUSH this file/project
     environment:
       CONNECTION_STR: "jdbc:mysql://db:3306/startcode"
+      CONNECTION_STR2: "jdbc:mysql://db:3306/new_db"
       USER: "dev" # database user to use in tomcat apps
       PW: "ax2" # database password
       DEPLOYED: "PROD"
@@ -52,5 +53,5 @@ services:
     command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps && cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml && catalina.sh run"
     
 networks:
-  tomcat_network:
+  virtual_network1:
     driver: bridge
