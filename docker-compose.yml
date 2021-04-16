@@ -21,7 +21,7 @@ services:
       - ./scripts:/scripts
       - ./mysql/startscript:/docker-entrypoint-initdb.d
     networks:
-      - tomcat_network
+      -  virtual_network1
 
   web:
     # image:  tomcat:9.0.37-jdk8
@@ -46,11 +46,13 @@ services:
 
  
     networks:
-      - tomcat_network
+      -  virtual_network1
     
       # copy the tomcat manager app, context.xml and start tomcat)
     command: sh -c "cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps && cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml && catalina.sh run"
     
 networks:
-  tomcat_network:
+  virtual_network1:
     driver: bridge
+
+# bridge: The default network driver. If you don’t specify a driver, this is the type of network you are creating. Bridge networks are usually used when your applications run in standalone containers that need to communicate. See bridge networks.
