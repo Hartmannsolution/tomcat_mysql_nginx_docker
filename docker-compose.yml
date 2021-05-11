@@ -2,6 +2,7 @@ version: "3.7"
 services:
   db:
     # image: mysql:8.0
+    platform: linux/amd64
     build: ./mysql/
     container_name: mysql_3sem
     restart: unless-stopped 
@@ -25,6 +26,7 @@ services:
 
   web:
     # image:  tomcat:9.0.37-jdk8
+    platform: linux/amd64
     build: ./tomcat/
     container_name: tomcat_3sem
     restart: unless-stopped
